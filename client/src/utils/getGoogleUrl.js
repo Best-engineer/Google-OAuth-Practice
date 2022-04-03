@@ -1,4 +1,6 @@
 function getGoogleOAuthURL() {
+  // AUTHORIZE_URI : 사용자 승인을 얻기 위한 승인 서버(https만 엑세스 허용)
+  // Refer : https://developers.google.com/identity/protocols/oauth2/native-app
   const AUTHORIZE_URI = 'https://accounts.google.com/o/oauth2/v2/auth';
   const GOOGLE_CLIENT_ID =
     '779018207520-qvftar8nin7c9bqo0q4ouk4mtj7gb6lc.apps.googleusercontent.com';
@@ -22,14 +24,14 @@ function getGoogleOAuthURL() {
       'https://www.googleapis.com/auth/userinfo.email',
     ].join(' '),
   };
-  console.log({ options });
+  // console.log({ options });
 
   // URLSearchParams : URL 매개변수를 쉽게 가져옴
   // abc.com/ko/?page=1
   // 인스턴스 생성 : const params = new URLSearchParams(window.location.search);
   // const page = params.get('page'); // 1
   const qs = new URLSearchParams(options);
-  console.log(qs.toString());
+  // console.log(qs.toString());
 
   // qs.toString : URL 을 문자열로 생성! (https://phiilu.com/?greeting=Hello+World)
   return `${AUTHORIZE_URI}?${qs.toString()}`;
